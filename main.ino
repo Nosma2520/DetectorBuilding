@@ -1,3 +1,5 @@
+
+
 void setup() 
 {
   Serial.begin(115200); //This code sets up the Serial port at 115200 baud rate
@@ -13,12 +15,12 @@ void loop() //This function loops while the Arduino is powered
   double G = 10; // value for which the Greed LED will turn on
   double B = 200; // value for which the Blue LED will turn on 
   int B_value = 3950; // B coefficient Input actual value
-  float NOMINAL_R = 516; // input actual value
+  float NOMINAL_V = 2; // input actual value
   
   
   float val = (1023/analogRead(0))-1; //Read the analog port 0 converts the reading to resistance, and store the value in val
-  double volt = (3.3 * 10000) / (10000+ val); // Creates an integer variable for voltage
-  double temp =(298.15*B_value)/(B_value+298.15*log((NOMINAL_R+10000)/(val+10000)))-273.15; //Runs the math using B-parameter Equation
+  double volt =(3.3 * 10000) / (10000+ val); // Creates an integer variable for voltage
+  double temp =(298.15*B_value)/(B_value+298.15*log(volt*(10*NOMINAL_V-33)/NOMINAL_V*(10*volt-33)))-273.15; //Runs the math using B-parameter Equation
 
   //Prints to the display the temperature and voltage throud the serail port.
   Serial.print("\nTemperature:");
