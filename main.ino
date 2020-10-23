@@ -1,5 +1,3 @@
-
-
 void setup() 
 {
   Serial.begin(115200); //This code sets up the Serial port at 115200 baud rate
