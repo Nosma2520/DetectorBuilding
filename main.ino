@@ -18,7 +18,7 @@ void loop() //This function loops while the Arduino is powered
   
   
   float val = (1023/analogRead(0))-1; //Read the analog port 0 converts the reading to resistance, and store the value in val
-  double volt =(5 * 10000) / (10000+ val); // Calculates the output voltage of the potential voltage divider
+  double volt = pow((10000+ val)/50000,-1); // Calculates the output voltage of the potential voltage divider
   double temp = (B_value/log(((50000-10000*volt)/volt)/(10000*exp(-B_value/298.15))))-273.15; //Calculates the temperure in Degrees Celcius using the B-parameter Equation
 
   //Prints to the display the temperature and voltage throud the serail port.
