@@ -14,13 +14,13 @@ void loop() //This function loops while the Arduino is powered
   double R = 300; // value for which the Red LED will turn on
   double G = 10; // value for which the Greed LED will turn on
   double B = 200; // value for which the Blue LED will turn on 
-  int B_value = 3950; // B coefficient Input actual value
-  float NOMINAL_V = 2; // input actual value
+  int B_value = 4038; // B coefficient for thermistor
+  float NOMINAL_V = 5; // input actual value
   
   
   float val = (1023/analogRead(0))-1; //Read the analog port 0 converts the reading to resistance, and store the value in val
-  double volt =(3.3 * 10000) / (10000+ val); // Creates an integer variable for voltage
-  double temp =(298.15*B_value)/(B_value+298.15*log(volt*(10*NOMINAL_V-33)/NOMINAL_V*(10*volt-33)))-273.15; //Runs the math using B-parameter Equation
+  double volt =(5 * 10000) / (10000+ val); // Calculates the output voltage of the potential voltage divider
+  double temp = (B_value/log(((50000-10000*volt)/volt)/(10000*exp(-B_value/298.15))))-273.15; //Calculates the temperure in Degrees Celcius using the B-parameter Equation
 
   //Prints to the display the temperature and voltage throud the serail port.
   Serial.print("\nTemperature:");
