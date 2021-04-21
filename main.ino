@@ -15,7 +15,6 @@ void loop() //This function loops while the Arduino is powered
   double G = 10; // value for which the Greed LED will turn on
   double B = 200; // value for which the Blue LED will turn on 
   int B_value = 4038; // B coefficient for thermistor
-  float NOMINAL_V = 5; // input actual value
   
   
   float val = (1023/analogRead(0))-1; //Read the analog port 0 converts the reading to resistance, and store the value in val
