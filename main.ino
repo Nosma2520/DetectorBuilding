@@ -17,7 +17,7 @@ void loop() //This function loops while the Arduino is powered
   int B_value = 4038; // B coefficient for thermistor
   
   
-  float val = (1023/analogRead(0))-1; //Read the analog port 0 converts the reading to resistance, and store the value in val
+  double val = (1023/analogRead(0))-1; //Read the analog port 0 converts the reading to resistance, and store the value in val
   double volt = pow((10000+ val)/50000,-1); // Calculates the output voltage of the potential voltage divider
   double temp = (B_value/log(((50000-10000*volt)/volt)/(10000*exp(-B_value/298.15))))-273.15; //Calculates the temperure in Degrees Celcius using the B-parameter Equation
 
