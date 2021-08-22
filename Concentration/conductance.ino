@@ -8,7 +8,7 @@ void loop() //This function loops while the Arduino is powered
 {
   // Calculations of voltage and conductance
   double volt = analogRead(0)*(5.0/1023.0); 
-  double condVal = pow((50-10*volt)/volt,-1)*1e3; 
+  double condVal = pow((50000-10000*volt)/volt,-1)*1e6; 
  
   //Print results w/ units
   Serial.print("\nVoltage: ");
@@ -16,6 +16,6 @@ void loop() //This function loops while the Arduino is powered
   Serial.println(" volts");
   Serial.print("Conductance: ");
   Serial.print(condVal);
-  Serial.println(" S");
+  Serial.println(" µS");
   delay(3000); //Wait for 3 seconds 
 }
