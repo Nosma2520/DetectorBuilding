@@ -10,7 +10,7 @@ void setup()
 void loop() //This function loops while the Arduino is powered
 {
   // Calculations of voltage and conductance
-  double volt = adc.read(0)*(5.0/1023.0); 
+  double volt = adc.read(0)*(5.0/65535.0); 
   double concVal = // insert equation connecting volt to concentration
  
   //Print results w/ units
