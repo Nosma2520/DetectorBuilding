@@ -1,5 +1,5 @@
 #include <Oversampling.h>
-
+const double electrode_quotient = ; // quotient length of space between the electrodes and the area of the electrodes 
 Oversampling adc(10, 15, 2);
 void setup() 
 {
@@ -10,8 +10,8 @@ void setup()
 void loop() //This function loops while the Arduino is powered
 {
   // Calculations of voltage and concentration
-  double volt = adc.read(0)*(5.0/65535.0); 
-  double concVal = // insert equation connecting volt to concentration
+  double volt = adc.read(0)*(5.0/32767.0); 
+  double concVal = pow((50000-10000*volt)/volt,-1)*electrode_quotient;
  
   //Print results w/ units
   Serial.print("\nVoltage: ");
@@ -20,5 +20,5 @@ void loop() //This function loops while the Arduino is powered
   Serial.print("Concentration : ");
   Serial.print(concVal);
   Serial.println(" ppm");
-  delay(3000); //Wait for 3 seconds 
+  delay(1000); //Wait for 1 second 
 }
