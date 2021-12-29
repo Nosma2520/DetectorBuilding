@@ -1,5 +1,5 @@
 #include <Oversampling.h>
-const double electrode_quotient = ; // quotient length of space between the electrodes and the area of the electrodes 
+const double electrode_quotient = .2; // quotient of the distance between the electrodes and the area of the electrodes 
 Oversampling adc(10, 15, 2);
 void setup() 
 {
